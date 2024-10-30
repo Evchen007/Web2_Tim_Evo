@@ -8,42 +8,27 @@ import hoki_map from "../assets/images/Hoki_map.png"
 	<div class:list={["max-w-screen-xl mx-auto px-5"]}>
 		<html lang="en">
 			<div class="grid place-items-center content-center ">
- 	  			<p class="text-5xl font-extrabold text-red-800 my-5">Hoki Weingarten</p>
-					<div><Image src={hoki_map} alt="Hoki Standort" width="400"/></div>
+ 	  			<p class="text-5xl font-extrabold text-red-700 my-5">Kontakt</p>
 
-<!-- Eingebettete Kartee
-					<iframe
-  						width="600"
-  						height="450"
-  						style="border:0"
-  						loading="lazy"
-  						allowfullscreen
-  						referrerpolicy="no-referrer-when-downgrade"
-  						src="https://www.google.com/maps/embed/v1/place?key=
-    					&q=Space+Needle,Seattle+WA">
-						</iframe> -->
+					<!-- <div> <Image src={hoki_map} alt="Hoki Standort" width="600" /></div> -->
 
-				<p class="text-2xl py-5">Standort der coolsten Bar!</p>
-				<p class="text-1xl py-5"> HoKi - Holzkiste, St.-Longinus-Straße 8, 88250 Weingarten</p>
+		
+				  <!-- eingebettete interaktive Karte -->
+				  <iframe
+					width="600"
+					height="450"
+					style="border:0"
+					loading="lazy"
+					allowfullscreen
+					src="https://www.openstreetmap.org/export/embed.html?bbox=9.6450,47.8080,9.6480,47.8105&layer=mapnik&marker=47.8093,9.6465">
+					</iframe>
+
+
+				<p class="text-1xl py-1"> HoKi - Holzkiste, St.-Longinus-Straße 8, 88250 Weingarten</p>
+				<p class="text-1xl py-1 text-left"> Instagram: <a href="https://www.instagram.com/hoki_wgt" target="_blank" rel="noopener noreferrer">hoki_wgt</a></p>
+				<p class="text-1xl py-1"> Öffnungszeiten: Montag - Freitag von 20:00 bis 01:00 Uhr </p>
 			</div>
 		</html>
 	</div>
-	<div class="drawer">
-		<input id="my-drawer" type="checkbox" class="drawer-toggle" />
-		<div class="drawer-content flex justify-center items-center h-auto py-8">
-		  <!-- Page content here -->
-		  <label for="my-drawer" class="btn btn-primary drawer-button">Open sidebar</label>
-		</div>
-		<div class="drawer-side">
-		  <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
-		  <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-			<!-- Sidebar content here -->
-			<li><a>Home</a></li>
-			<li><a>Blog</a></li>
-			<li><a>Contact</a></li>
-			<li><a>Login</a></li>
-		  </ul>
-		</div>
-	  </div>
 	  
 </Layout>

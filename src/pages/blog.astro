@@ -1,0 +1,60 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from 'astro:assets';
+import Layout from "@layouts/Layout.astro";
+
+// Alle Assets aus content/blog laden. 
+// alle aussortieren, die noch nicht veröffentlicht werden sollen. 
+const publishedBlogEntries = await getCollection("blog", ({ data }) => {
+  return data.publish && data.publishDate < new Date();
+});
+
+// Nach Datum sortieren
+publishedBlogEntries.sort(function (a, b) {
+  return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
+});
+---
+
+<Layout title="Blog">
+    <main class="mt-16">
+      <ul class="grid gap-16 max-w-4xl mx-auto">
+        {
+          publishedBlogEntries.map((blogPostEntry, index) => (
+            <li>
+              <a href={`/blogarticle/${blogPostEntry.slug}`}>
+                <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
+                <Image
+                    src={"/images/" + blogPostEntry.data.image.src }
+                    alt={blogPostEntry.data.image.alt}
+                    sizes="(max-width: 800px) 100vw, 800px"
+                    width="200"
+                    height="355"
+                    loading={index <= 2 ? "eager" : "lazy"}
+                    decoding={index <= 2 ? "sync" : "async"}
+                    class="w-full rounded-md"
+                 /> 
+                  <div>
+                    <h2 class="text-3xl font-semibold leading-snug tracking-tight mt-1 ">
+                      {blogPostEntry.data.title}
+                    </h2>
+
+                    <div class="flex gap-2 mt-3">
+                      <span class="text-gray-400">
+                        {blogPostEntry.data.author}
+                      </span>
+                      <span class="text-gray-400">• </span>
+                      <time
+                        class="text-gray-400"
+                        datetime={blogPostEntry.data.publishDate.toISOString()}>
+                        {blogPostEntry.data.publishDate.toDateString()}
+                      </time>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+</Layout>
